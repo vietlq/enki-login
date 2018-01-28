@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "outDir": "./built",
+        "allowJs": true,
+        "target": "es5",
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "allowUnusedLabels": false,
+        "allowUnreachableCode": false,
+        "strict": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "alwaysStrict": true,
+        "noImplicitThis": true
+    },
+    "include": [
+        "./server/**/*",
+        "./controllers/**/*",
+        "./models/**/*",
+        "./*.ts"
+    ]
+}

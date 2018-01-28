@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Nonce = require('../models/nonces');
 const User = require('../models/users');
 
-const runtimeEnv = process.env.NODE_ENV || 'dev';
+const runtimeEnv = process.env.NODE_ENV || 'local';
 const runtimeCfg = require(`../../config/config.${runtimeEnv}`);
 
 // https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications

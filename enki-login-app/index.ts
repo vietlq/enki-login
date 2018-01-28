@@ -1,26 +1,29 @@
-const express = require('express');
-const bodyParser = require('body-parser')
-const path = require('path');
-
-const controllers = require('./controllers/mongodb');
+import express = require('express');
+import { Request, Response, NextFunction } from 'express';
+import bodyParser = require('body-parser');
+import path = require('path');
 
 //////////////// Environment ////////////////
 
-const runtimeEnv = process.env.NODE_ENV || 'dev';
+const runtimeEnv = process.env.NODE_ENV || 'local';
 const runtimeCfg = require(`../config/config.${runtimeEnv}`);
 
-var app = express();
+const controllers = require('./controllers/mongodb');
+
+var app : express.Express = express();
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // https://expressjs.com/en/starter/static-files.html
 app.use('/static', express.static('public/static'));
 
-//////////////// Handlers ////////////////
+const serveIndex = (req: Request, res: Response, next: NextFunction) => {
+    res.sendFile(path.join(__dirname + '/public/index.html'));
 
-const serveIndex = (req, res) => {
-  res.sendFile(path.join(__dirname + '/public/index.html'));
+    next();
+
+    return true;
 }
 
 //////////////// End-points ////////////////
