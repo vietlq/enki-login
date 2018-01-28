@@ -39,3 +39,8 @@
 * https://www.typescriptlang.org/docs/handbook/modules.html
 * https://basarat.gitbooks.io/typescript/docs/types/migrating.html
 * https://stackoverflow.com/questions/26188754/how-to-use-d-ts-files
+
+* https://medium.com/@evangow/server-authentication-basics-express-sessions-passport-and-curl-359b7456003d
+* https://glebbahmutov.com/blog/express-sessions/
+
+* https://blog.sessionstack.com/how-javascript-works-the-building-blocks-of-web-workers-5-cases-when-you-should-use-them-a547c0757f6a
