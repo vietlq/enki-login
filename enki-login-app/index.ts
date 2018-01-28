@@ -15,12 +15,8 @@ app.use(bodyParser.json());
 // https://expressjs.com/en/starter/static-files.html
 app.use('/static', express.static('public/static'));
 
-const serveIndex = (req: Request, res: Response, next: NextFunction) => {
+const serveIndex = (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname + '/public/index.html'));
-
-    next();
-
-    return true;
 }
 
 //////////////// End-points ////////////////

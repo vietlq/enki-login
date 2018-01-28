@@ -3,8 +3,8 @@ const utils = require('../server/utils');
 import { Request, Response, NextFunction } from 'express';
 
 import mongoose = require('mongoose');
-const Nonce = require('../models/nonces');
-const User = require('../models/users');
+import { Nonce } from '../models/nonce';
+import { User } from '../models/user';
 
 import { runtimeCfg } from '../server/getconfig';
 
@@ -60,6 +60,12 @@ export const serveSignup = (req: Request, res: Response) => {
 
     Nonce.findOne({ serverNonce: rawObj.serverNonce })
     .then((nonce) => {
+        if (nonce === null || nonce === undefined) {
+            const errMsg = `The server nonce is not found: ${rawObj.serverNonce}`;
+            console.error(errMsg);
+            throw errMsg;
+        }
+
         const serverEpoch = parseInt(nonce.serverEpoch);
 
         if (serverEpoch !== rawObj.serverEpoch) {
@@ -175,6 +181,12 @@ export const serveLogin = (req: Request, res: Response) => {
 
     Nonce.findOne({ serverNonce: rawObj.serverNonce })
     .then((nonce) => {
+        if (nonce === null || nonce === undefined) {
+            const errMsg = `The server nonce is not found: ${rawObj.serverNonce}`;
+            console.error(errMsg);
+            throw errMsg;
+        }
+
         const serverEpoch = parseInt(nonce.serverEpoch);
 
         if (serverEpoch !== rawObj.serverEpoch) {
@@ -231,6 +243,8 @@ export const serveLogin = (req: Request, res: Response) => {
                 errCode: 'LOGIN_SUCCESS',
                 errMsg: 'Successful login!'
             });
+
+            return true;
         })
         .catch((err) => {
             console.log(`Error occured when searching for the email: ${email}`);
