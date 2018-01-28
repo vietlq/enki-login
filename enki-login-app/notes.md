@@ -30,3 +30,12 @@
 
 * https://askubuntu.com/questions/441990/unable-to-create-lock-file-when-starting-mongod-via-upstart
 * https://medium.com/@pablo_ezequiel/creating-a-docker-image-with-mongodb-4c8aa3f828f2
+
+* https://github.com/Microsoft/dts-gen
+* http://www.typescriptlang.org/docs/handbook/declaration-files/by-example.html
+* http://brianflove.com/2016/10/04/typescript-declaring-mongoose-schema-model/
+* https://www.typescriptlang.org/docs/handbook/gulp.html
+* https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html
+* https://www.typescriptlang.org/docs/handbook/modules.html
+* https://basarat.gitbooks.io/typescript/docs/types/migrating.html
+* https://stackoverflow.com/questions/26188754/how-to-use-d-ts-files

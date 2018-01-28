@@ -15,9 +15,11 @@
         "noImplicitThis": true
     },
     "include": [
-        "./server/**/*",
         "./controllers/**/*",
+        "./interfaces/**/*",
         "./models/**/*",
+        "./server/**/*",
+        "./typings/**/*",
         "./*.ts"
     ]
 }
