@@ -1,0 +1,63 @@
+{
+  "name": "enki-login",
+  "version": "1.0.0",
+  "description": "Enki Login",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify index.js -t [ babelify --stage 0 ] | uglifyjs --screw-ie8 -c=dead_code,evaluate,loops,unused > public/bundle.js",
+    "start": "watchify index.js -o public/bundle.js -dv -p livereactload & serve public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vietlq/enki-login.git"
+  },
+  "keywords": [
+    "enki",
+    "ethereum",
+    "blockchain",
+    "id",
+    "login"
+  ],
+  "author": "Le Quoc Viet <vietlq85@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vietlq/enki-login/issues"
+  },
+  "homepage": "https://github.com/vietlq/enki-login#readme",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "body-parser": "^1.18.2",
+    "elliptic": "^6.4.0",
+    "eth-sig-util": "^1.4.2",
+    "ethjs": "^0.3.3",
+    "express": "^4.16.2",
+    "keccak": "^1.4.0",
+    "leveldown": "^2.1.1",
+    "levelup": "^2.0.1",
+    "mongoose": "^5.0.1",
+    "stack-trace": "0.0.10",
+    "uuid": "^3.2.1",
+    "web3": "^0.20.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-react-transform": "^3.0.0",
+    "babel-plugin-uglify": "^1.0.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "babelify": "^8.0.0",
+    "browserify": "^15.2.0",
+    "livereactload": "^3.3.0",
+    "node-hot-loader": "^1.5.2",
+    "react-hot-loader": "^3.1.3",
+    "react-proxy": "^1.1.8",
+    "serve": "^6.4.8",
+    "uglify-js": "^3.3.7",
+    "watchify": "^3.9.0",
+    "watchr": "^3.0.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-middleware": "^2.0.4",
+    "webpack-hot-middleware": "^2.21.0"
+  }
+}

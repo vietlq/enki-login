@@ -1,0 +1,28 @@
+[Unit]
+Description=PM2 process manager
+Documentation=https://pm2.keymetrics.io/
+After=network.target
+
+[Service]
+Type=forking
+User=vietlq
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+Environment=PATH=/home/vietlq/.nvm/versions/node/v8.9.4/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+Environment=PM2_HOME=/home/vietlq/.pm2
+PIDFile=/home/vietlq/.pm2/pm2.pid
+Restart=always
+
+ExecStart=/home/vietlq/.nvm/versions/node/v8.9.4/lib/node_modules/pm2/bin/pm2 resurrect
+ExecReload=/home/vietlq/.nvm/versions/node/v8.9.4/lib/node_modules/pm2/bin/pm2 reload all
+ExecStop=/home/vietlq/.nvm/versions/node/v8.9.4/lib/node_modules/pm2/bin/pm2 kill
+
+[Install]
+WantedBy=multi-user.target
+
+# https://hackernoon.com/making-node-js-service-always-alive-on-ubuntu-server-e20c9c0808e4
+# https://blog.codeship.com/running-node-js-linux-systemd/
+# https://www.digitalocean.com/community/tutorials/how-to-deploy-node-js-applications-using-systemd-and-nginx
+# http://nodesource.com/blog/running-your-node-js-app-with-systemd-part-1/
+# https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands

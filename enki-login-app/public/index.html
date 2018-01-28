@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Test MetaMask + Web3.js</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 column ui-sortable">
+        <h1>Enki - Smart &amp; Secure Identity</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 column ui-sortable">
+        <div class="box box-element">
+          <div class="jumbotron" contenteditable="false">
+            <h2>Password-free Sign-in</h2>
+            <p>Forget about the passwords. The only way to stop people from creating weak passwords and reusing them is not to have them at all. We have crafted a novel and intuitive login experience for security and ease of use.</p>
+            <h3 id="network-watcher">Your are on the network: $$</h3>
+            <p>
+              <button type="button" class="btn btn-primary btn-large" onclick="showSignupModal()">Sign me up</button>
+              <button type="button" class="btn btn-secondary btn-large" onclick="showLoginModal()">Login</button>
+            </p>
+          </div>
+        <div class="jumbotron" contenteditable="false">
+          <h3>We recommend <a href="https://metamask.io/">MetaMask</a></h3>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sign Up Modal -->
+  <div class="modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="modal-signup-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-signup-long-title">Password-free Sign Up</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="modal-signup-form">
+            <div class="form-group row">
+              <label for="cst-input-full-name" class="col-sm-3 col-form-label">Full Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control cst-input-full-name" placeholder="First name & Last name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="cst-input-email" class="col-sm-3 col-form-label">Email</label>
+              <div class="col-sm-9">
+                <input type="email" class="form-control cst-input-email" placeholder="Email">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="cst-input-vid-addr" class="col-sm-3 col-form-label">Virtuous ID</label>
+              <div class="col-sm-9">
+                <select class="form-control cst-input-vid-addr">
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="dismissSignupModal()">Close</button>
+          <button type="button" class="btn btn-primary" onclick="performSignup()">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-login-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-login-long-tile">Password-free Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="modal-login-form">
+            <div class="form-group row">
+              <label for="cst-input-email" class="col-sm-3 col-form-label">Email</label>
+              <div class="col-sm-9">
+                <input type="email" class="form-control cst-input-email" placeholder="Email">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="cst-input-vid-addr" class="col-sm-3 col-form-label">Virtuous ID</label>
+              <div class="col-sm-9">
+                <select class="form-control cst-input-vid-addr">
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="dismissLoginModal()">Close</button>
+          <button type="button" class="btn btn-primary" onclick="performLogin()">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <!-- Virtuous ID -->
+  <script type="application/javascript" src="static/web3.min.js"></script>
+  <script type="application/javascript" src="static/sha3.min.js"></script>
+  <script type="application/javascript" src="static/axios.min.js"></script>
+  <script type="application/javascript" src="https://wzrd.in/standalone/uuid%2Fv4@latest"></script>
+  <script type="application/javascript" src="static/enki.min.js"></script>
+  <script type="application/javascript" src="static/app.min.js"></script>
+
+</body>
+</html>
