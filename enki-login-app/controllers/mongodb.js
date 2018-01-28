@@ -5,8 +5,11 @@ const mongoose = require('mongoose');
 const Nonce = require('../models/nonces');
 const User = require('../models/users');
 
+const runtimeEnv = process.env.NODE_ENV || 'dev';
+const runtimeCfg = require(`../../config/config.${runtimeEnv}`);
+
 // https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications
-mongoose.connect('mongodb://localhost/enki_login')
+mongoose.connect(runtimeCfg.connectionString)
 .then((val) => {
     console.log("Successfully connected to the MongoDB");
 })
