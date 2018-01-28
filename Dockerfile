@@ -5,9 +5,10 @@ WORKDIR /opt/enki/login/app
 VOLUME /opt/enki/login/config
 
 RUN npm install
-RUN npm install -g -D babel-cli uglify-js
+RUN npm install -g -D babel-cli uglify-js typescript
 RUN make build
+RUN ln -f -s /opt/enki/login/config .
 
 EXPOSE 1337
 
-CMD ["/usr/local/bin/node", "index.js"]
+CMD ["/usr/local/bin/node", "built/index.js"]

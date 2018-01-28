@@ -1,12 +1,12 @@
 const uuidv4 = require('uuid/v4');
 const utils = require('../server/utils');
+import { Request, Response, NextFunction } from 'express';
 
-const mongoose = require('mongoose');
+import mongoose = require('mongoose');
 const Nonce = require('../models/nonces');
 const User = require('../models/users');
 
-const runtimeEnv = process.env.NODE_ENV || 'local';
-const runtimeCfg = require(`../../config/config.${runtimeEnv}`);
+import { runtimeCfg } from '../server/getconfig';
 
 // https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications
 mongoose.connect(runtimeCfg.connectionString)
@@ -19,18 +19,20 @@ mongoose.connect(runtimeCfg.connectionString)
     throw ('Could not connect to the MongoDB!')
 });
 
-const serveNonce = (req, res) => {
+export const serveNonce = (req: Request, res: Response) => {
     const serverNonce = uuidv4();
     const serverEpoch = + new Date();
 
     Nonce.findOne({ serverNonce: serverNonce })
-    .then(() => {
-        return uuidv4();
+    .then((nonce) => {
+        if (nonce === null) {
+            return uuidv4();
+        }
     })
     .catch((err) => {
         return serverNonce;
     })
-    .then((newServerNonce) => {
+    .then((newServerNonce: string) => {
         const nonce = new Nonce({
             serverNonce: newServerNonce,
             serverEpoch: serverEpoch
@@ -48,7 +50,7 @@ const serveNonce = (req, res) => {
     });
 }
 
-const serveSignup = (req, res) => {
+export const serveSignup = (req: Request, res: Response) => {
     const postData = req.body;
     const rawObj = postData.rawObj;
     const signature = postData.signature;
@@ -151,11 +153,8 @@ const serveSignup = (req, res) => {
 
         // Clean the DB
         Nonce.findOneAndRemove({ serverNonce: rawObj.serverNonce })
-        .then((value) => {
-            console.log(value);
-        })
         .catch((err) => {
-            console.log(err);
+            console.error(err);
         });
 
         res.send({
@@ -166,7 +165,7 @@ const serveSignup = (req, res) => {
     });
 }
 
-const serveLogin = (req, res) => {
+export const serveLogin = (req: Request, res: Response) => {
     const postData = req.body;
     const rawObj = postData.rawObj;
     const signature = postData.signature;
@@ -270,9 +269,3 @@ const serveLogin = (req, res) => {
         });
     });
 }
-
-module.exports = {
-    serveNonce: serveNonce,
-    serveSignup: serveSignup,
-    serveLogin: serveLogin,
-};

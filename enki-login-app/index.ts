@@ -3,10 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import bodyParser = require('body-parser');
 import path = require('path');
 
-//////////////// Environment ////////////////
-
-const runtimeEnv = process.env.NODE_ENV || 'local';
-const runtimeCfg = require(`../config/config.${runtimeEnv}`);
+import { runtimeCfg } from './server/getconfig';
 
 const controllers = require('./controllers/mongodb');
 
