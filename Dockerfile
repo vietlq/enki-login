@@ -8,6 +8,7 @@ RUN npm install
 RUN npm install -g -D babel-cli uglify-js typescript
 RUN make build
 RUN ln -f -s /opt/enki/login/config .
+RUN ln -f -s /opt/enki/login/app/public /opt/enki/login/app/built/public
 
 EXPOSE 1337
 
