@@ -33,19 +33,23 @@
     "@types/uuid": "^3.4.3",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.2",
+    "core-js": "^3.4.1",
     "elliptic": "^6.4.0",
     "eth-sig-util": "^1.4.2",
     "ethjs": "^0.3.3",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
-    "keccak": "^1.4.0",
+    "keccak": "^2.0.0",
     "leveldown": "^2.1.1",
     "levelup": "^2.0.1",
     "mongoose": "^5.0.1",
     "session-file-store": "^1.2.0",
     "stack-trace": "0.0.10",
     "uuid": "^3.2.1",
-    "web3": "^0.20.4"
+    "web3": "^1.2.4"
+  },
+  "optionalDependencies": {
+    "fsevents": "^1.2.9"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

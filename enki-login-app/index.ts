@@ -12,7 +12,7 @@ import { runtimeCfg } from './server/getconfig';
 const FileStore = SessionFileStore(session);
 const fileStoreOptions: SessionFileStore.Options = {
     path: "./tmp/sessions/",
-    logFn: (a: string) => {
+    logFn: (__unused__: string) => {
     }
 };
 
